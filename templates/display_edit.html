@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1 class="display-1">Pet Information</h1>
+    <div class="row">
+        <div class="col-sm">
+            <img class="img-thumbnail" src="{{pet.photo_url}}" alt="">
+            <h1>{{pet.name}}</h1>
+            <h4>Species: {{pet.species}}</h4>
+            <h4>Age: {{pet.age}}</h4>
+        </div>
+        <div class="col-sm">
+            <form method="POST">
+                <h4>Edit Profile</h4>
+                {{ form.hidden_tag()}}
+                {% for field in form if field.widget.input_type != 'hidden' %}
+                <p>
+                    {{field.label}}
+                    {{field}}
+                </p>
+                {% endfor %}
+                <button class="btn btn-success btn-lg">Save</button>
+                <a class="btn btn-danger btn-lg" href="/">Cancel</a>
+            </form>
+        </div>
+    </div>                          
+</div>                              
+{% endblock %}
